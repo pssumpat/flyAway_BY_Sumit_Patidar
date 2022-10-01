@@ -7,6 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<form action ='scheduleFlight'>
+Route Id			:		<input type='text' name='routeId'><br><br>
+date				:		<input type='text' name='date'><br><br>
+Time for departure 	:		<input type='text' name='timeDepart'><br><br>
+Time for landing	:		<input type='text' name='timeArrive'><br><br>
+<input type='submit' value='Schedule'><br><br>
+</form>
+
 <%
 try
 {
@@ -16,7 +25,8 @@ try
 	ResultSet rs = stmt.executeQuery("select * from schedule");
 	while(rs.next())
 	{
-		out.println(rs.getString(1)+"		"+rs.getString(2)+"		"+rs.getString(3)+"		"+rs.getString(4)+"		"+rs.getString(5)+"		"+rs.getString(6)+"		");
+		out.println(rs.getString(1)+"		"+rs.getString(2)+"		"+rs.getString(3)+"		"+rs.getString(4));
+		out.println("<BR>");
 	}
 }
 catch (ClassNotFoundException e) {
@@ -27,13 +37,5 @@ catch (ClassNotFoundException e) {
 	e.printStackTrace();
 }	
 %>
-<form action ='scheduleFlight'>
-Flight Name			:		<input type='text' name='flightName'><br><br>
-Route Id			:		<input type='text' name='routeId'><br><br>
-date				:		<input type='text' name='date'><br><br>
-Time for departure 	:		<input type='text' name='timeDepart'><br><br>
-Time for landing	:		<input type='text' name='timeArrive'><br><br>
-<input type='submit' value='Schedule'><br><br>
-</form>
 </body>
 </html>

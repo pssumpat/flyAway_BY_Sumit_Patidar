@@ -40,6 +40,7 @@ public class assign extends HttpServlet {
 			rd.forward(request, response);
 		}
 		catch (ClassNotFoundException e) {
+			
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {

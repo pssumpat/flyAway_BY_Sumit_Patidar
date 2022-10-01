@@ -21,7 +21,6 @@ public class scheduleFlight extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String flightName = request.getParameter("flightName");
 		String routeId = request.getParameter("routeId");
 		String date = request.getParameter("date");
 		String timeDepart = request.getParameter("timeDepart");
@@ -30,12 +29,11 @@ public class scheduleFlight extends HttpServlet {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localHost:3006/admin","root","tiger");
-			PreparedStatement stmt= con.prepareStatement("insert into schedule values(?,?,?,?,?);");
-			stmt.setString(1, flightName);
-			stmt.setString(2, routeId);
-			stmt.setString(3, date);
-			stmt.setString(4, timeDepart);
-			stmt.setString(5, timeArrive);
+			PreparedStatement stmt= con.prepareStatement("insert into schedule values(?,?,?,?);");
+			stmt.setString(1, routeId);
+			stmt.setString(2, date);
+			stmt.setString(3, timeDepart);
+			stmt.setString(4, timeArrive);
 			stmt.execute();
 			stmt.close();con.close();
 			RequestDispatcher rd = request.getRequestDispatcher("adminHome.jsp");

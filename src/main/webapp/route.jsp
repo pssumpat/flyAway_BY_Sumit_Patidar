@@ -58,7 +58,7 @@ try {
 	Class.forName("com.mysql.cj.jdbc.Driver");
 	Connection con1 = DriverManager.getConnection("jdbc:mysql://localHost:3006/admin","root","tiger");
 	Statement stmt1 = con1.createStatement();
-	ResultSet rs1 = stmt1.executeQuery("select r.routeId,r.source,r.destination,a.flightId,a.ticketPrice from routes r left join assign a on r.routeId = a.routeId;");
+	ResultSet rs1 = stmt1.executeQuery("select A.flightId,A.routeId,A.ticketPrice,R.source,R.destination FROM ASSIGN A left join routes R on A.routeId = R.routeId;");
 	while(rs1.next())
 	{
 		out.println(rs1.getString(1)+"		"+rs1.getString(2)+"			"+rs1.getString(3)+"			"+rs1.getString(4)+"			"+rs1.getString(5));
@@ -72,7 +72,7 @@ try {
 	// TODO Auto-generated catch block
 	e.printStackTrace();
 }	
-%>>
+%>
 
 </body>
 </html>
